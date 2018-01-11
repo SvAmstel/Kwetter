@@ -20,8 +20,8 @@ namespace Kwetter.Views
         {
             using (var context = new KwetterContext())
             {
-                Gebruiker u1 = new Gebruiker() { naam = "Simon" };
-                Gebruiker u2 = new Gebruiker() { naam = "Frank" };
+                Gebruiker u1 = new Gebruiker() { naam = "Simon", bio = "testBioSimon" };
+                Gebruiker u2 = new Gebruiker() { naam = "Frank", bio = "testBioFrank" };
                 context.gebruikers.Add(u1);
                 context.gebruikers.Add(u2);
                 context.SaveChanges();
@@ -33,7 +33,6 @@ namespace Kwetter.Views
             using (var context = new KwetterContext())
             {
                 var gebruiker = context.gebruikers.First(a => a.naam == "Simon");
-                var connectionString = context.Database.Connection.ConnectionString;
                 lblNaam.Text = gebruiker.naam;
             }
 

@@ -87,6 +87,11 @@
   <ItemGroup>
     <Compile Include="Data\Context\KwetterContext.cs" />
     <Compile Include="Data\Models\Gebruiker.cs" />
+    <Compile Include="Migrations\201801111844244_InitialCreate.cs" />
+    <Compile Include="Migrations\201801111844244_InitialCreate.Designer.cs">
+      <DependentUpon>201801111844244_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -98,6 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801111844244_InitialCreate.resx">
+      <DependentUpon>201801111844244_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
