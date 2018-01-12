@@ -13,6 +13,7 @@ namespace Kwetter.Data.Service
         {
             using (var context = new KwetterContext())
             {
+                context.Database.ExecuteSqlCommand("TRUNCATE TABLE [Gebruikers]");
                 Gebruiker u1 = new Gebruiker() { naam = "Simon", bio = "testBioSimon" };
                 Gebruiker u2 = new Gebruiker() { naam = "Frank", bio = "testBioFrank" };
                 Gebruiker u3 = new Gebruiker() { naam = "Klaas", bio = "testBioKlaas" };
