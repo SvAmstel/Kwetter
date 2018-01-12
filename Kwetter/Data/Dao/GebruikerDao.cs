@@ -9,5 +9,6 @@ namespace Kwetter.Data.Dao
     public interface IGebruikerDao
     {
         List<Gebruiker> GetAllGebruikers();
+        Gebruiker GetGebruikerByNaam(string naam);
     }
 }

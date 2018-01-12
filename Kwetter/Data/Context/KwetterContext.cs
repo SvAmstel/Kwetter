@@ -15,6 +15,7 @@ namespace Kwetter.Data.Context
         }
 
         public DbSet<Gebruiker> gebruikers { get; set; }
+        public DbSet<Tweet> tweets { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

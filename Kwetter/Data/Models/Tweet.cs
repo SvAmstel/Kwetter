@@ -5,12 +5,11 @@ using System.Web;
 
 namespace Kwetter.Data.Models
 {
-    public class Gebruiker
+    public class Tweet
     {
         public int Id { get; set; }
-        public string naam { get; set; }
-        public string bio { get; set; }
-
-        public List<Tweet> tweets { get; set; }
+        public string content { get; set; }
+        public string postedFrom { get; set; }
+        //public DateTime postDate { get; set; }
     }
 }

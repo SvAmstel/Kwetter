@@ -26,6 +26,7 @@ namespace Kwetter.Views
         {
             ks = new KwetterService();
             List<Gebruiker> gebruikers = ks.GetAllGebruikers();
+            Gebruiker gebruiker = ks.GetGebruikerByNaam("Simon");
         }
     }
 }

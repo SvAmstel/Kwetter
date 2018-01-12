@@ -22,5 +22,15 @@ namespace Kwetter.Data.Dao
             }
             return gebruikers;
         }
+
+        public Gebruiker GetGebruikerByNaam(string naam)
+        {
+            Gebruiker gebruiker = new Gebruiker();
+            using (var context = new KwetterContext())
+            {
+                gebruiker = (Gebruiker)context.gebruikers.Where(g => g.naam.Equals(naam)).FirstOrDefault(); ;
+            }
+            return gebruiker;
+        }
     }
 }

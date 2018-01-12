@@ -23,5 +23,11 @@ namespace Kwetter.Data.Service
             gebruikers = gebruikerDao.GetAllGebruikers();
             return gebruikers;
         }
+
+        public Gebruiker GetGebruikerByNaam(string naam)
+        {
+            Gebruiker gebruiker = gebruikerDao.GetGebruikerByNaam(naam);
+            return gebruiker;
+        }
     }
 }
