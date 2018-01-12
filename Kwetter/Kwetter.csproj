@@ -92,7 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Context\KwetterContext.cs" />
+    <Compile Include="Data\Dao\GebruikerDao.cs" />
+    <Compile Include="Data\Dao\GebruikerDaoImpl.cs" />
     <Compile Include="Data\Models\Gebruiker.cs" />
+    <Compile Include="Data\Service\KwetterService.cs" />
     <Compile Include="Data\Service\Start.cs" />
     <Compile Include="Migrations\201801111844244_InitialCreate.cs" />
     <Compile Include="Migrations\201801111844244_InitialCreate.Designer.cs">

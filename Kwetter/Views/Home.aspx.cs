@@ -1,4 +1,5 @@
 ﻿using Kwetter.Data.Context;
+using Kwetter.Data.Dao;
 using Kwetter.Data.Models;
 using Kwetter.Data.Service;
 using System;
@@ -12,20 +13,19 @@ namespace Kwetter.Views
 {
     public partial class Home : System.Web.UI.Page
     {
+        private KwetterService ks;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Start start = new Start();
             start.Initialize();
+           
         }
 
         protected void btnTest2_Click(object sender, EventArgs e)
         {
-            using (var context = new KwetterContext())
-            {
-                var gebruiker = context.gebruikers.First(a => a.naam == "Simon");
-                lblNaam.Text = gebruiker.naam;
-            }
-
+            ks = new KwetterService();
+            List<Gebruiker> gebruikers = ks.GetAllGebruikers();
         }
     }
 }
