@@ -10,6 +10,6 @@ namespace Kwetter.Data.Models
         public int Id { get; set; }
         public string content { get; set; }
         public string postedFrom { get; set; }
-        //public DateTime postDate { get; set; }
+        public DateTime postDate { get; set; }
     }
 }

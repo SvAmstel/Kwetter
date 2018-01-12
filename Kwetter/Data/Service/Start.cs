@@ -23,7 +23,7 @@ namespace Kwetter.Data.Service
                 Gebruiker u3 = new Gebruiker() { naam = "Klaas", bio = "testBioKlaas", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
                 
                 //Tweets aanmaken en aan een gebruiker toevoegen
-                Tweet t1 = new Tweet() { content = "Dit is een tweet van Simon", postedFrom = "PC" };
+                Tweet t1 = new Tweet() { content = "Dit is een tweet van Simon", postedFrom = "PC", postDate = DateTime.Now };
                 List<Tweet> tweets = new List<Tweet>();
                 tweets.Add(t1);
                 u1.tweets.AddRange(tweets);
