@@ -12,5 +12,6 @@ namespace Kwetter.Data.Models
         public string bio { get; set; }
 
         public List<Tweet> tweets { get; set; }
+        public List<Gebruiker> followers { get; set; }
     }
 }
