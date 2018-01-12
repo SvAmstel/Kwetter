@@ -11,10 +11,12 @@ namespace Kwetter.Data.Service
     public class KwetterService
     {
         IGebruikerDao gebruikerDao;
+        ITweetDao tweetDao;
 
         public KwetterService()
         {
             gebruikerDao = new GebruikerDaoImpl();
+            tweetDao = new TweetDaoImpl();
         }
 
         public List<Gebruiker> GetAllGebruikers()
@@ -28,6 +30,13 @@ namespace Kwetter.Data.Service
         {
             Gebruiker gebruiker = gebruikerDao.GetGebruikerByNaam(naam);
             return gebruiker;
+        }
+
+        public List<Tweet> GetTweetsByGebruiker(Gebruiker g)
+        {
+            List<Tweet> tweets = new List<Tweet>();
+            tweets = tweetDao.GetAllTweetsByGebruiker(g);
+            return tweets;
         }
     }
 }

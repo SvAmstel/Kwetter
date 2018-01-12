@@ -25,8 +25,9 @@ namespace Kwetter.Views
         protected void btnTest2_Click(object sender, EventArgs e)
         {
             ks = new KwetterService();
-            List<Gebruiker> gebruikers = ks.GetAllGebruikers();
             Gebruiker gebruiker = ks.GetGebruikerByNaam("Simon");
+            List<Tweet> tweets = ks.GetTweetsByGebruiker(gebruiker);
+           
         }
     }
 }

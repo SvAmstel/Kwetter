@@ -94,6 +94,8 @@
     <Compile Include="Data\Context\KwetterContext.cs" />
     <Compile Include="Data\Dao\GebruikerDao.cs" />
     <Compile Include="Data\Dao\GebruikerDaoImpl.cs" />
+    <Compile Include="Data\Dao\ITweetDao.cs" />
+    <Compile Include="Data\Dao\TweetDaoImpl.cs" />
     <Compile Include="Data\Models\Gebruiker.cs" />
     <Compile Include="Data\Models\Tweet.cs" />
     <Compile Include="Data\Service\KwetterService.cs" />
