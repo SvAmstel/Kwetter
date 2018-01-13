@@ -36,5 +36,17 @@ namespace Kwetter.Data.Dao
             }
             return tweets;
         }
+
+        public void CreateTweet(Tweet t, Gebruiker g)
+        {
+            using (var context = new KwetterContext())
+            {
+                g.tweets = GetAllTweetsByGebruiker(g);
+                g.tweets.Add(t);
+                context.tweets.Add(t);
+                context.Entry(g).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }

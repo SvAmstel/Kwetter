@@ -52,5 +52,10 @@ namespace Kwetter.Data.Service
             following = gebruikerDao.GetFollowing(g);
             return following;
         }
+
+        public void CreateTweet(Tweet t, Gebruiker g)
+        {
+            tweetDao.CreateTweet(t, g);
+        }
     }
 }

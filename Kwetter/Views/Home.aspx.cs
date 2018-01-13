@@ -25,10 +25,11 @@ namespace Kwetter.Views
         protected void btnTest2_Click(object sender, EventArgs e)
         {
             ks = new KwetterService();
-            Gebruiker gebruiker = ks.GetGebruikerByNaam("Frank");
+            Gebruiker gebruiker = ks.GetGebruikerByNaam("Simon");
             List<Tweet> tweets = ks.GetTweetsByGebruiker(gebruiker);
             List<Gebruiker> followers = ks.GetFollowers(gebruiker);
             List<Gebruiker> following = ks.GetFollowing(gebruiker);
+            ks.CreateTweet(new Tweet() { content = "Dit is de tweede tweet van Simon", postedFrom = "Android", postDate = DateTime.Now }, gebruiker);
         }
     }
 }
