@@ -22,5 +22,19 @@ namespace Kwetter.Data.Dao
             }
             return tweets;
         }
+
+        public List<Tweet> GetAllTweets()
+        {
+            List<Tweet> tweets = new List<Tweet>();
+            using (var context = new KwetterContext())
+            {
+                var gebruikerTweets = context.tweets.SqlQuery("Select * from Tweets");
+                foreach (var t in gebruikerTweets)
+                {
+                    tweets.Add(t);
+                }
+            }
+            return tweets;
+        }
     }
 }

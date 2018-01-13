@@ -38,5 +38,19 @@ namespace Kwetter.Data.Service
             tweets = tweetDao.GetAllTweetsByGebruiker(g);
             return tweets;
         }
+
+        public List<Gebruiker> GetFollowers(Gebruiker g)
+        {
+            List<Gebruiker> followers = new List<Gebruiker>();
+            followers = gebruikerDao.GetFollowers(g);
+            return followers;
+        }
+
+        public List<Gebruiker> GetFollowing(Gebruiker g)
+        {
+            List<Gebruiker> following = new List<Gebruiker>();
+            following = gebruikerDao.GetFollowing(g);
+            return following;
+        }
     }
 }

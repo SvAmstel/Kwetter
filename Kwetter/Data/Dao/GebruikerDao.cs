@@ -10,5 +10,8 @@ namespace Kwetter.Data.Dao
     {
         List<Gebruiker> GetAllGebruikers();
         Gebruiker GetGebruikerByNaam(string naam);
+        Gebruiker GetGebruikerById(int id);
+        List<Gebruiker> GetFollowers(Gebruiker g);
+        List<Gebruiker> GetFollowing(Gebruiker g);
     }
 }

@@ -19,15 +19,16 @@ namespace Kwetter.Views
         {
             Start start = new Start();
             start.Initialize();
-           
+
         }
 
         protected void btnTest2_Click(object sender, EventArgs e)
         {
             ks = new KwetterService();
-            Gebruiker gebruiker = ks.GetGebruikerByNaam("Simon");
+            Gebruiker gebruiker = ks.GetGebruikerByNaam("Frank");
             List<Tweet> tweets = ks.GetTweetsByGebruiker(gebruiker);
-           
+            List<Gebruiker> followers = ks.GetFollowers(gebruiker);
+            List<Gebruiker> following = ks.GetFollowing(gebruiker);
         }
     }
 }

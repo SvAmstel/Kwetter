@@ -9,5 +9,6 @@ namespace Kwetter.Data.Dao
     public interface ITweetDao
     {
         List<Tweet> GetAllTweetsByGebruiker(Gebruiker g);
+        List<Tweet> GetAllTweets();
     }
 }

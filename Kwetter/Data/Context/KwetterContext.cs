@@ -20,7 +20,7 @@ namespace Kwetter.Data.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Gebruiker>().HasMany(a => a.followers).WithMany().Map(t => t.MapLeftKey("Gebruiker").MapRightKey("Follower").ToTable("Followers"));
+            modelBuilder.Entity<Gebruiker>().HasMany(a => a.followers).WithMany().Map(t => t.MapLeftKey("GebruikerId").MapRightKey("FollowerId").ToTable("Followers"));
         }
     }
 }
