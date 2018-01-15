@@ -9,6 +9,7 @@ namespace Kwetter.Data.Dao
 {
     public class GebruikerDaoImpl : IGebruikerDao
     {
+
         public List<Gebruiker> GetAllGebruikers()
         {
             List<Gebruiker> gebruikers = new List<Gebruiker>();
