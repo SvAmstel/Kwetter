@@ -13,6 +13,8 @@ namespace Kwetter.Data.Service
         {
             using (var context = new KwetterContext())
             {
+
+                //context.Database.Delete();
                 //Check of er iets in de database staat.Zo niet, maak nieuwe gebruikers en tweets aan
                 if (!context.gebruikers.Any())
                 {
