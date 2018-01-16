@@ -13,14 +13,26 @@ namespace Kwetter.REST
     {
         KwetterService ks = new KwetterService();
 
-        public List<Gebruiker> Get()
+        public List<Gebruiker> GetAllUsers()
         {
             return ks.GetAllGebruikers();
         }
 
-        public Gebruiker Get([FromUri]string naam)
+        // GET api/kwetter/getuser
+        [HttpGet]
+        [Route("api/kwetter/getuser/{naam}")]
+        public Gebruiker GetUser(string naam)
         {
             return ks.GetGebruikerByNaam(naam);
+        }
+
+        // GET api/kwetter/getusertweets
+        [HttpGet]
+        [Route("api/kwetter/getusertweets/{naam}")]
+        public List<Tweet> GetTweetsByUser(string naam)
+        {
+            Gebruiker g = ks.GetGebruikerByNaam(naam);
+            return ks.GetTweetsByGebruiker(g);
         }
     }
 }
