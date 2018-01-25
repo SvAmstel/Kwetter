@@ -12,7 +12,10 @@ namespace Kwetter.REST
     public class KwetterController : ApiController
     {
         KwetterService ks = new KwetterService();
-
+        
+        // GET api/kwetter/getusers
+        [HttpGet]
+        [Route("api/kwetter/getusers")]
         public List<Gebruiker> GetAllUsers()
         {
             return ks.GetAllGebruikers();

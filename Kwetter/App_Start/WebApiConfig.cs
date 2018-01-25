@@ -11,7 +11,7 @@ namespace Kwetter
         {
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(name: "API Default", routeTemplate: "api/{controller}");
-
+            config.Routes.MapHttpRoute(name: "APIGetAll", routeTemplate: "api/{controller}/{action}");
             config.Routes.MapHttpRoute(name: "APIGet",routeTemplate: "api/{controller}/{action}/{naam}",defaults: new { naam = RouteParameter.Optional });
         }
     }

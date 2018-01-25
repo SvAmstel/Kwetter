@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('kwetter-client App', () => {
+describe('ketter-client App', () => {
   let page: AppPage;
 
   beforeEach(() => {
