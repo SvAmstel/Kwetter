@@ -11,6 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
   private usersUrl = 'http://localhost:59694/api/kwetter/getusers'; 
   getUsers(): Observable<User[]> {
+    this.http.get(this.usersUrl).subscribe(data => console.log(data));
     return this.http.get<User[]>(this.usersUrl);
   }
 }
