@@ -9,6 +9,7 @@ namespace Kwetter
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(name: "API Default", routeTemplate: "api/{controller}");
             config.Routes.MapHttpRoute(name: "APIGetAll", routeTemplate: "api/{controller}/{action}");
