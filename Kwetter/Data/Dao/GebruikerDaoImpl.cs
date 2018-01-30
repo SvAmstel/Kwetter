@@ -4,22 +4,19 @@ using System.Linq;
 using System.Web;
 using Kwetter.Data.Context;
 using Kwetter.Data.Models;
+using Kwetter.Data.Service;
 
 namespace Kwetter.Data.Dao
 {
     public class GebruikerDaoImpl : IGebruikerDao
     {
-
+       // private KwetterService ks = new KwetterService();
         public List<Gebruiker> GetAllGebruikers()
         {
             List<Gebruiker> gebruikers = new List<Gebruiker>();
             using (var context = new KwetterContext())
             {
-                var users = context.gebruikers;
-                foreach (Gebruiker g in users)
-                {
-                    gebruikers.Add(g);
-                }
+                gebruikers = (List<Gebruiker>)context.gebruikers.ToList();
             }
             return gebruikers;
         }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { USERS } from './mock-users';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,9 +8,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  private usersUrl = 'http://localhost:59694/api/kwetter/getusers'; 
+
+  private getUsersUrl = 'http://localhost:59694/api/kwetter/getusers';
+
   getUsers(): Observable<User[]> {
-    this.http.get(this.usersUrl).subscribe(data => console.log(data));
-    return this.http.get<User[]>(this.usersUrl);
+    this.http.get(this.getUsersUrl).subscribe(data => console.log(data));
+    return this.http.get<User[]>(this.getUsersUrl);
   }
+
+
 }

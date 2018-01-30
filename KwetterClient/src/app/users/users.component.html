@@ -1,7 +1,7 @@
 <h2>Alle gebruikers</h2>
 <ul class="users">
   <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
-    <span class="badge">{{user.id}}</span> {{user.name}}
+    <span class="badge">{{user.Id}}</span> {{user.naam}}
   </li>
 </ul>
 
