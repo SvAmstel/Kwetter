@@ -8,20 +8,23 @@ import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
 import { UserService } from './user.service';
+import { TweetsComponent } from './tweets/tweets.component';
+import { TweetService } from './tweet.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    TweetsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, TweetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,8 @@
+<div *ngIf="user">
+  <h2>{{ user.naam | uppercase }} Tweets</h2>
+  <ul class="users">
+    <li *ngFor="let tweet of tweets">
+      <span class="badge">{{tweet.Id}}</span> {{tweet.content}}
+    </li>
+  </ul>
+  </div>
