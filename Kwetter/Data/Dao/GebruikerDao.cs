@@ -13,5 +13,6 @@ namespace Kwetter.Data.Dao
         Gebruiker GetGebruikerById(int id);
         List<Gebruiker> GetFollowers(Gebruiker g);
         List<Gebruiker> GetFollowing(Gebruiker g);
+        void CreateUser(Gebruiker g);
     }
 }

@@ -18,6 +18,11 @@ export class TweetsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelect(user: User): void {
+    this.user = user;
+    this.getTweets(this.user.naam);
+  }
+
   getTweets(gebruikersNaam): void {
     this.tweetService.getTweets(gebruikersNaam).subscribe(tweets => this.tweets = tweets);
   }

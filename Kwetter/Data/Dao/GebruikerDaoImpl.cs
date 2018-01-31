@@ -70,5 +70,13 @@ namespace Kwetter.Data.Dao
             }
             return gebruikers;
         }
+
+        public void CreateUser(Gebruiker g)
+        {
+            using (var context = new KwetterContext())
+            {
+                context.gebruikers.Add(g);
+            }
+        }
     }
 }

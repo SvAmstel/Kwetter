@@ -58,5 +58,10 @@ namespace Kwetter.Data.Service
         {
             tweetDao.CreateTweet(t, g);
         }
+
+        public void CreateUser(Gebruiker g)
+        {
+            gebruikerDao.CreateUser(g);
+        }
     }
 }
