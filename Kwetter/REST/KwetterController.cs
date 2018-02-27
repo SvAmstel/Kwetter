@@ -6,7 +6,7 @@ using System.Web.Http.Cors;
 
 namespace Kwetter.REST
 {
-    [EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE")]
+    //[EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE")]
     public class KwetterController : ApiController
     {
         KwetterService ks = new KwetterService();
