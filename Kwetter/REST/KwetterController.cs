@@ -1,5 +1,6 @@
 ﻿using Kwetter.Data.Models;
 using Kwetter.Data.Service;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -39,12 +40,13 @@ namespace Kwetter.REST
 
         // POST api/kwetter/adduser
         [HttpPost]
-        [Route("api/kwetter/adduser/{naam}")]
-        public void PostAddUser([FromBody]string naam)
+        [Route("api/kwetter/adduser")]
+        public void PostAddUser([FromBody]Gebruiker g)
         {
-            Gebruiker g = new Gebruiker();
-            g.naam = naam;
-            ks.CreateUser(g);
+            Gebruiker geb = g;
+
+            Console.WriteLine(g.naam);
+            //ks.CreateUser(g);
         }
     }
 }

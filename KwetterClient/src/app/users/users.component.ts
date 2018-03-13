@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { TweetService } from '../tweet.service';
+//import { TweetService } from '../tweet.service';
 
 
 
@@ -12,7 +12,7 @@ import { TweetService } from '../tweet.service';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private userService: UserService, private tweetService: TweetService) { }
+  constructor(private userService: UserService,  /*, private tweetService: TweetService*/) { }
 
   selectedUser: User;
   users: User[];
@@ -23,7 +23,8 @@ export class UsersComponent implements OnInit {
 
   onSelect(user: User): void {
     this.selectedUser = user;
-    this.tweetService.getTweets(this.selectedUser.naam);
+    console.log("User component " + this.selectedUser.naam);
+    
   }
 
   getUsers(): void {
