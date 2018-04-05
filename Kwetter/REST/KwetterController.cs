@@ -2,6 +2,7 @@
 using Kwetter.Data.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -12,41 +13,28 @@ namespace Kwetter.REST
     {
         KwetterService ks = new KwetterService();
         
-        // GET api/kwetter/getusers
         [HttpGet]
-        [Route("api/kwetter/getusers")]
+        [Route("api/kwetter/users")]
         public List<Gebruiker> GetAllUsers()
         {
             return ks.GetAllGebruikers();
         }
 
-        // GET api/kwetter/getuser
         [HttpGet]
-        [AcceptVerbs("GET", "POST")]
-        [Route("api/kwetter/getuser/{naam}")]
-        public Gebruiker GetUser(string naam)
-        {
-            return ks.GetGebruikerByNaam(naam);
-        }
-
-        // GET api/kwetter/getusertweets
-        [HttpGet]
-        [Route("api/kwetter/getusertweets/{naam}")]
+        [Route("api/kwetter/{naam}/tweets")]
         public List<Tweet> GetTweetsByUser(string naam)
         {
             Gebruiker g = ks.GetGebruikerByNaam(naam);
             return ks.GetTweetsByGebruiker(g);
         }
 
-        // POST api/kwetter/adduser
         [HttpPost]
-        [Route("api/kwetter/adduser")]
-        public void PostAddUser([FromBody]Gebruiker g)
+        [Route("api/kwetter/{naam}/add")]
+        public void PostAddUser(string naam)
         {
-            Gebruiker geb = g;
-
-            Console.WriteLine(g.naam);
-            //ks.CreateUser(g);
+            Gebruiker geb = new Gebruiker() { naam = naam, bio = "", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
+            Debug.WriteLine(geb.naam);
+            ks.CreateUser(geb);
         }
     }
 }

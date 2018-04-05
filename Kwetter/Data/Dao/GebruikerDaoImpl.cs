@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Kwetter.Data.Context;
@@ -76,6 +77,7 @@ namespace Kwetter.Data.Dao
             using (var context = new KwetterContext())
             {
                 context.gebruikers.Add(g);
+                context.SaveChanges();
             }
         }
     }

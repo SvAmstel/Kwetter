@@ -11,12 +11,15 @@ export class TweetService {
     this.tweets.subscribe(tweet => { console.log(tweet) })
   }
 
-  private getTweetsUrl = 'http://localhost:59694/api/kwetter/getusertweets/';
+  private getTweetsUrl = 'http://localhost:59694/api/kwetter/';
+  private finalUrl = "";
 
   tweets: Subject<Tweet[]>;
 
   getTweets(gebruikersNaam): Subject<Tweet[]> {
-    this.http.get<Tweet[]>(this.getTweetsUrl.concat(gebruikersNaam)).subscribe(tweet => { console.log(tweet); this.tweets.next(tweet); console.log(this.tweets) });
+    this.finalUrl = this.getTweetsUrl + gebruikersNaam + "/tweets";
+    console.log(this.finalUrl);
+    this.http.get<Tweet[]>(this.finalUrl).subscribe(tweet => { console.log(tweet); this.tweets.next(tweet); console.log(this.tweets) });
     return this.tweets;
   }
 }
