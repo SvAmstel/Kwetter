@@ -18,6 +18,11 @@ namespace Kwetter.Data.Dao
             using (var context = new KwetterContext())
             {
                 gebruikers = (List<Gebruiker>)context.gebruikers.ToList();
+                foreach(Gebruiker g in gebruikers)
+                {
+                    g.followers = GetFollowers(g);
+                    g.following = GetFollowing(g);
+                }
             }
             return gebruikers;
         }

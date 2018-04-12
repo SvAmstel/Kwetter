@@ -20,9 +20,9 @@ namespace Kwetter.Data.Service
                 {
 
                     //Gebruikers aanmaken
-                    Gebruiker u1 = new Gebruiker() { naam = "Simon", bio = "testBioSimon", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
-                    Gebruiker u2 = new Gebruiker() { naam = "Frank", bio = "testBioFrank", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
-                    Gebruiker u3 = new Gebruiker() { naam = "Klaas", bio = "testBioKlaas", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
+                    Gebruiker u1 = new Gebruiker() { naam = "Simon", bio = "testBioSimon", tweets = new List<Tweet>(), followers = new List<Gebruiker>(), following = new List<Gebruiker>() };
+                    Gebruiker u2 = new Gebruiker() { naam = "Frank", bio = "testBioFrank", tweets = new List<Tweet>(), followers = new List<Gebruiker>(), following = new List<Gebruiker>() };
+                    Gebruiker u3 = new Gebruiker() { naam = "Klaas", bio = "testBioKlaas", tweets = new List<Tweet>(), followers = new List<Gebruiker>(), following = new List<Gebruiker>() };
 
                     //Tweets aanmaken en aan een gebruiker toevoegen
                     Tweet t1 = new Tweet() { content = "Dit is de eerste tweet van Simon", postedFrom = "PC", postDate = DateTime.Now };
@@ -55,7 +55,6 @@ namespace Kwetter.Data.Service
                     context.tweets.Add(t2);
                     context.tweets.Add(t3);
                     context.SaveChanges();
-
                 }
             }
         }

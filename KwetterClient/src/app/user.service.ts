@@ -14,4 +14,8 @@ export class UserService {
     this.http.get(this.getUsersUrl).subscribe(data => console.log(data));
     return this.http.get<User[]>(this.getUsersUrl);
   }
+
+  addUser() {
+
+  }
 }

@@ -13,5 +13,6 @@ namespace Kwetter.Data.Models
 
         public List<Tweet> tweets { get; set; }
         public List<Gebruiker> followers { get; set; }
+        public List<Gebruiker> following { get; set; }
     }
 }
