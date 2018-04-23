@@ -3,6 +3,7 @@ using Kwetter.Data.Service;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -29,12 +30,12 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
-        [Route("api/kwetter/{naam}/add")]
-        public void PostAddUser(string naam)
+        [Route("api/kwetter/add")]
+        public void PostAddUser([FromBody] string naam)
         {
             Gebruiker geb = new Gebruiker() { naam = naam, bio = "", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
             Debug.WriteLine(geb.naam);
-            ks.CreateUser(geb);
+            //ks.CreateUser(geb);
         }
     }
 }
