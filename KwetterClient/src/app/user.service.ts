@@ -16,15 +16,14 @@ export class UserService {
   }
 
   addUser(gebruikersNaam) {
-    const req = this.http.post('http://localhost:59694/api/kwetter/' + gebruikersNaam + '/add', {
-      naam: gebruikersNaam,
-    })
-      .subscribe(
+    const req = this.http.post('http://localhost:59694/api/kwetter/users/add', {
+      gebruikersNaam
+    }).subscribe(
       res => {
         console.log(res);
       },
       err => {
-        console.log("Error occured");
+        console.log(err);
       }
       );
   }

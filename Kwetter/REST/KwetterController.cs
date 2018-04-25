@@ -30,12 +30,12 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
-        [Route("api/kwetter/add")]
+        [Route("api/kwetter/users/add")]
         public void PostAddUser([FromBody] string naam)
         {
             Gebruiker geb = new Gebruiker() { naam = naam, bio = "", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
             Debug.WriteLine(geb.naam);
-            //ks.CreateUser(geb);
+            ks.CreateUser(geb);
         }
     }
 }

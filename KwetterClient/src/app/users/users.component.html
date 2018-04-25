@@ -4,6 +4,6 @@
     <span class="badge">{{user.Id}}</span> {{user.naam}}
   </li>
 </ul>
-
+<input name="txtadduser"/><button onclick="{{ adduser($(txtadduser).val) }}" class="badge">Gebruiker toevoegen</button>
 <app-user-detail [user]="selectedUser"></app-user-detail>
 <app-tweets [user]="selectedUser"></app-tweets>
