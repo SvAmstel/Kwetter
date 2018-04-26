@@ -12,7 +12,9 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   selectedUser: User;
+  user: User;
   users: User[];
+  naam: string;
 
   ngOnInit() {
     this.getUsers();
@@ -27,8 +29,9 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
 
-  adduser(gebruikersNaam): void {
-    console.log('nieuwe gebruiker: ' + gebruikersNaam);
-    this.userService.addUser(gebruikersNaam);
-  }
+  adduser(naam: string): void {
+    this.naam = naam;
+    //console.log('nieuwe gebruiker: ' + this.naam);
+    this.userService.addUser(this.naam);
+}
 }
