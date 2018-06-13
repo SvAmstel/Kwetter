@@ -6,7 +6,7 @@ h1 {
 }
 
 h2, h3 {
-  color: #444;
+  color: #369;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
@@ -15,11 +15,31 @@ body {
   margin: 2em;
 }
 
-body, input[text], button {
-  color: #888;
+body, input[text] {
+  color: #369;
   font-family: Cambria, Georgia;
 }
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button.bs-teal {
+  background-color: #358cca;
+}
+
+button {
+  padding: 4px 18px;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  background-color: #369;
+  color: #fff;
+  text-transform: uppercase;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin: 0px 1px;
+  cursor: pointer;
 }

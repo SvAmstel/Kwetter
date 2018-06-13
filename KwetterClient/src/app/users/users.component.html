@@ -1,10 +1,17 @@
-<h2>Alle gebruikers</h2>
-<ul class="users">
-  <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
-    <span class="badge">{{user.Id}}</span> {{user.naam}}
-  </li>
-</ul>
+<div *ngIf="selectedUser" class="hidden">
+  <button class="users" type="button" (click)="overview()">Terug</button>
+</div>
+<div *ngIf="!selectedUser" class="hidden">
+  <h2>Alle gebruikers</h2>
+  <ul class="users">
+    <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
+      <span></span> {{user.naam}}
+    </li>
+  </ul>
   <input type="text" name="naam" #naam />
   <button type="button" (click)="adduser(naam.value)">Gebruiker toevoegen</button>
-<app-user-detail [user]="selectedUser"></app-user-detail>
-<app-tweets [user]="selectedUser"></app-tweets>
+</div>
+  <div *ngIf="selectedUser" class="hidden">
+    <app-user-detail [user]="selectedUser"></app-user-detail>
+    <app-tweets [user]="selectedUser"></app-tweets>
+  </div>

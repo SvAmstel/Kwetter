@@ -29,6 +29,10 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
 
+  overview(): void {
+    this.selectedUser = null;
+  }
+
   adduser(naam: string): void {
     this.naam = naam;
     //console.log('nieuwe gebruiker: ' + this.naam);

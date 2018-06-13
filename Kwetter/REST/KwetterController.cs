@@ -34,9 +34,7 @@ namespace Kwetter.REST
         public void PostAddUser(HttpRequestMessage request)
         {
             var message = request.Content.ReadAsStringAsync().Result;
-            //Debug.WriteLine(message);
             Gebruiker geb = new Gebruiker() { naam = message, bio = "", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
-            //Debug.WriteLine(geb.naam);
             ks.CreateUser(geb);
         }
     }
