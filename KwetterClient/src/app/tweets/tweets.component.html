@@ -4,9 +4,10 @@
   <table *ngFor="let tweet of tweets" [class.selected]="tweet === selectedTweet">
     <tr  >
       <td rowspan="2">
-        <span class="badge"> {{tweet.content}}</span>
+        <input type="text" class="badge" value="{{tweet.content}}" #edit /> 
         <span>{{tweet.postDate}}</span>
-        <button type="button"  (click)="deleteTweet(tweet.Id)">X</button>
+        <button type="button" (click)="deleteTweet(tweet.Id)">X</button>
+        <button type="button" (click)="editTweet(tweet.Id, edit.value)">Wijzig Tweet</button>
       </td>
     </tr>
   </table>

@@ -80,5 +80,10 @@ namespace Kwetter.Data.Service
         {
             tweetDao.DeleteTweet(id);
         }
+
+        public void EditTweet(Tweet t)
+        {
+            tweetDao.EditTweet(t);
+        }
     }
 }

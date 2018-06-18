@@ -41,4 +41,9 @@ export class TweetsComponent implements OnInit {
   deleteTweet(id) {
     this.tweetService.deleteTweet(id);
   }
+
+  editTweet(id: number, edit: string) {
+    console.log('id: ' + id + ' text:' + edit);
+    this.tweetService.editTweet(id, edit);
+  }
 }

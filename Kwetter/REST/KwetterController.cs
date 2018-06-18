@@ -68,5 +68,17 @@ namespace Kwetter.REST
             // Gebruiker geb = new Gebruiker() { naam = message, bio = "", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
             //gebruikerDao.CreateUser(geb);
         }
+
+        [HttpPost]
+        [Route("api/kwetter/tweets/edit")]
+        public void PostEditTweet(HttpRequestMessage request)
+        {
+            var message = request.Content.ReadAsStringAsync().Result;
+            JObject jTweet = JObject.Parse(message);
+            Tweet t = new Tweet();
+            t.content = jTweet["content"].ToString();
+            t.Id = Convert.ToInt32( jTweet["Id"].ToString());
+            tweetDao.EditTweet(t);
+        }
     }
 }

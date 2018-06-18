@@ -16,6 +16,7 @@ export class TweetService {
   private finalUrl = "";
   tweet: Tweet;
   id: number;
+  editText: string;
   tweets: Subject<Tweet[]>;
 
   getTweets(gebruikersNaam): Subject<Tweet[]> {
@@ -40,8 +41,24 @@ export class TweetService {
 
   deleteTweet(id) {
     this.id = id;
-
     const req = this.http.post('http://localhost:59694/api/kwetter/tweets/delete', JSON.stringify(this.id), { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) }).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  editTweet(id, text) {
+    this.id = id;
+    this.editText = text;
+    this.tweet = new Tweet();
+    this.tweet.Id = this.id;
+    this.tweet.content = this.editText;
+    console.log(this.tweet);
+    const req = this.http.post('http://localhost:59694/api/kwetter/tweets/edit', JSON.stringify(this.tweet), { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) }).subscribe(
       res => {
         console.log(res);
       },

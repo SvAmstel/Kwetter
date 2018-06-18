@@ -54,13 +54,23 @@ namespace Kwetter.Data.Dao
         {
             using (var context = new KwetterContext())
             {
-                Tweet t = context.tweets.SingleOrDefault(x => x.Id == id); 
+                Tweet t = context.tweets.SingleOrDefault(x => x.Id == id);
 
                 if (t != null)
                 {
                     context.tweets.Remove(t);
                     context.SaveChanges();
                 }
+            }
+        }
+
+        public void EditTweet(Tweet t)
+        {
+            using (var context = new KwetterContext())
+            {
+                Tweet tweet = context.tweets.SingleOrDefault(x => x.Id == t.Id);
+                tweet.content = t.content;
+                context.SaveChanges();
             }
         }
     }

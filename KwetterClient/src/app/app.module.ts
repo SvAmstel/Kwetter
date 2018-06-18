@@ -12,6 +12,7 @@ import { TweetsComponent } from './tweets/tweets.component';
 import { TweetService } from './tweet.service';
 import { LoginComponent } from './login/login.component';
 import { AddtweetsComponent } from './addtweets/addtweets.component';
+import { EditTweetComponent } from './edit-tweet/edit-tweet.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AddtweetsComponent } from './addtweets/addtweets.component';
     UserDetailComponent,
     TweetsComponent,
     LoginComponent,
-    AddtweetsComponent
+    AddtweetsComponent,
+    EditTweetComponent
   ],
   imports: [
     BrowserModule,
