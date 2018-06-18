@@ -15,6 +15,7 @@ export class TweetService {
   private getTweetsUrl = 'http://localhost:59694/api/kwetter/';
   private finalUrl = "";
   tweet: Tweet;
+  id: number;
   tweets: Subject<Tweet[]>;
 
   getTweets(gebruikersNaam): Subject<Tweet[]> {
@@ -37,10 +38,16 @@ export class TweetService {
     );
   }
 
- /* addTweet(tweet): Subject<Tweet[]> {
-    this.finalUrl = this.getTweetsUrl + gebruikersNaam + "/tweets";
-    console.log(this.finalUrl);
-    this.http.get<Tweet[]>(this.finalUrl).subscribe(tweet => { console.log(tweet); this.tweets.next(tweet); console.log(this.tweets) });
-    return this.tweets;
-  }*/
+  deleteTweet(id) {
+    this.id = id;
+
+    const req = this.http.post('http://localhost:59694/api/kwetter/tweets/delete', JSON.stringify(this.id), { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) }).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

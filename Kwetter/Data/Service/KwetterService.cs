@@ -75,5 +75,10 @@ namespace Kwetter.Data.Service
         {
             gebruikerDao.CreateUser(g);
         }
+
+        public void DeleteTweet(int id)
+        {
+            tweetDao.DeleteTweet(id);
+        }
     }
 }

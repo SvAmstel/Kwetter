@@ -11,5 +11,6 @@ namespace Kwetter.Data.Dao
         List<Tweet> GetAllTweetsByGebruiker(Gebruiker g);
         List<Tweet> GetAllTweets();
         void CreateTweet(Tweet t, Gebruiker g);
+        void DeleteTweet(int id);
     }
 }

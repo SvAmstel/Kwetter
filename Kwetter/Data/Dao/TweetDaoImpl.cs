@@ -49,5 +49,19 @@ namespace Kwetter.Data.Dao
                 context.SaveChanges();
             }
         }
+
+        public void DeleteTweet(int id)
+        {
+            using (var context = new KwetterContext())
+            {
+                Tweet t = context.tweets.SingleOrDefault(x => x.Id == id); 
+
+                if (t != null)
+                {
+                    context.tweets.Remove(t);
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

@@ -11,7 +11,9 @@ import { Subject } from 'rxjs/Subject';
 })
 export class TweetsComponent implements OnInit {
   private _user: User;
+
   constructor(private tweetService: TweetService) { }
+
   @Input()
   set user(user: User) {
     if (user != null) {
@@ -29,11 +31,14 @@ export class TweetsComponent implements OnInit {
 
   }
 
-
   getTweets(gebruikersNaam): void {
     console.log(gebruikersNaam);
     //this.tweetService.getTweets(gebruikersNaam).subscribe(data => console.log(data));
     this.tweetService.getTweets(gebruikersNaam).subscribe(data => { console.log(data)});
     this.tweetService.getTweets(gebruikersNaam).subscribe(tweets => this.tweets = tweets);
+  }
+
+  deleteTweet(id) {
+    this.tweetService.deleteTweet(id);
   }
 }

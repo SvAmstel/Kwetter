@@ -55,5 +55,18 @@ namespace Kwetter.REST
             tweet.postedFrom = jTweet["postedFrom"].ToString();
             tweetDao.CreateTweet(tweet, geb);
         }
+
+        [HttpPost]
+        [Route("api/kwetter/tweets/delete")]
+        public void PostDeleteTweet(HttpRequestMessage request)
+        {
+            var message = request.Content.ReadAsStringAsync().Result;
+            //JObject jTweet = JObject.Parse(message);
+            //int id = Convert.ToInt32(jTweet["id"].ToString());
+            tweetDao.DeleteTweet(Convert.ToInt32(message));
+
+            // Gebruiker geb = new Gebruiker() { naam = message, bio = "", tweets = new List<Tweet>(), followers = new List<Gebruiker>() };
+            //gebruikerDao.CreateUser(geb);
+        }
     }
 }
