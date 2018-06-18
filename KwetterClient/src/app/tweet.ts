@@ -3,4 +3,5 @@ export class Tweet {
   content: string;
   postedFrom: string;
   postDate: string;
+  Gebruiker_Id: number;
 }

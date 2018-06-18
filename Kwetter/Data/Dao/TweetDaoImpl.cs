@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Kwetter.Data.Context;
 using Kwetter.Data.Models;
+using Kwetter.Data.Service;
 
 namespace Kwetter.Data.Dao
 {

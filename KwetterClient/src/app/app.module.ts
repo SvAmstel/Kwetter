@@ -10,6 +10,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserService } from './user.service';
 import { TweetsComponent } from './tweets/tweets.component';
 import { TweetService } from './tweet.service';
+import { LoginComponent } from './login/login.component';
+import { AddtweetsComponent } from './addtweets/addtweets.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { TweetService } from './tweet.service';
     AppComponent,
     UsersComponent,
     UserDetailComponent,
-    TweetsComponent
+    TweetsComponent,
+    LoginComponent,
+    AddtweetsComponent
   ],
   imports: [
     BrowserModule,

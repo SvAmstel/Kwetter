@@ -12,12 +12,17 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   selectedUser: User;
+  loggedUser: User;
   user: User;
   users: User[];
   naam: string;
 
   ngOnInit() {
     this.getUsers();
+    this.loggedUser = new User();
+    this.loggedUser.naam = "Simon";
+    this.selectedUser = new User();
+    this.selectedUser.naam = "Simon";
   }
 
   onSelect(user: User): void {

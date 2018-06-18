@@ -1,6 +1,7 @@
 <div *ngIf="selectedUser" class="hidden">
-  <button class="users" type="button" (click)="overview()">Terug</button>
+  <button class="users">Terug</button>
 </div>
+<!--
 <div *ngIf="!selectedUser" class="hidden">
   <h2>Alle gebruikers</h2>
   <ul class="users">
@@ -8,10 +9,12 @@
       <span></span> {{user.naam}}
     </li>
   </ul>
-  <input type="text" name="naam" #naam />
-  <button type="button" (click)="adduser(naam.value)">Gebruiker toevoegen</button>
+    </div>-->
+    <div >
+  <app-login *ngIf="!loggedUser" class="hidden"></app-login>
 </div>
-  <div *ngIf="selectedUser" class="hidden">
-    <app-user-detail [user]="selectedUser"></app-user-detail>
-    <app-tweets [user]="selectedUser"></app-tweets>
-  </div>
+    <div *ngIf="selectedUser" class="hidden">
+      <app-user-detail [user]="selectedUser"></app-user-detail>
+      <app-addtweets [user]="selectedUser"></app-addtweets>
+      <app-tweets [user]="selectedUser"></app-tweets>
+    </div>

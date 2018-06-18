@@ -114,7 +114,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Data\Context\KwetterContext.cs" />
-    <Compile Include="Data\Dao\GebruikerDao.cs" />
+    <Compile Include="Data\Dao\IGebruikerDao.cs" />
     <Compile Include="Data\Dao\GebruikerDaoImpl.cs" />
     <Compile Include="Data\Dao\ITweetDao.cs" />
     <Compile Include="Data\Dao\TweetDaoImpl.cs" />
