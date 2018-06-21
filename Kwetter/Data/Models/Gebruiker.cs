@@ -10,6 +10,7 @@ namespace Kwetter.Data.Models
         public int Id { get; set; }
         public string naam { get; set; }
         public string bio { get; set; }
+        public string password { get; set; }
 
         public List<Tweet> tweets { get; set; }
         public List<Gebruiker> followers { get; set; }

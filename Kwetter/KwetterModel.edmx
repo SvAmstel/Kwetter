@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Kwetter.Data.Context.KwetterContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Followers">
+          <Key>
+            <PropertyRef Name="GebruikerId" />
+            <PropertyRef Name="FollowerId" />
+          </Key>
+          <Property Name="GebruikerId" Type="int" Nullable="false" />
+          <Property Name="FollowerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gebruikers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="bio" Type="nvarchar(max)" />
+          <Property Name="Gebruiker_Id" Type="int" />
+          <Property Name="password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tweets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="postedFrom" Type="nvarchar(max)" />
+          <Property Name="Gebruiker_Id" Type="int" Nullable="false" />
+          <Property Name="postDate" Type="datetime" Nullable="false" />
+          <Property Name="Gebruiker_Id1" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_dbo_GebruikerGebruikers_dbo_Gebruikers_Gebruiker_Id">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="1" />
+          <End Role="Followers" Type="Self.Followers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruikers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Followers">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GebruikerGebruikers_dbo_Gebruikers_Gebruiker_Id1">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="1" />
+          <End Role="Followers" Type="Self.Followers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruikers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Followers">
+              <PropertyRef Name="FollowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="0..1" />
+          <End Role="Gebruikers1" Type="Self.Gebruikers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruikers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gebruikers1">
+              <PropertyRef Name="Gebruiker_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="0..1" />
+          <End Role="Tweets" Type="Self.Tweets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruikers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tweets">
+              <PropertyRef Name="Gebruiker_Id1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KwetterDataContextKwetterContextModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Followers" EntityType="Self.Followers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gebruikers" EntityType="Self.Gebruikers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tweets" EntityType="Self.Tweets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_GebruikerGebruikers_dbo_Gebruikers_Gebruiker_Id" Association="Self.FK_dbo_GebruikerGebruikers_dbo_Gebruikers_Gebruiker_Id">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Followers" EntitySet="Followers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GebruikerGebruikers_dbo_Gebruikers_Gebruiker_Id1" Association="Self.FK_dbo_GebruikerGebruikers_dbo_Gebruikers_Gebruiker_Id1">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Followers" EntitySet="Followers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id" Association="Self.FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Gebruikers1" EntitySet="Gebruikers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1" Association="Self.FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Tweets" EntitySet="Tweets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Kwetter.Data.Context.KwetterContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Gebruikers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gebruiker_Id" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gebruikers1" Relationship="Self.FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id" FromRole="Gebruikers" ToRole="Gebruikers1" />
+          <NavigationProperty Name="Gebruikers2" Relationship="Self.FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id" FromRole="Gebruikers1" ToRole="Gebruikers" />
+          <NavigationProperty Name="Tweets" Relationship="Self.FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1" FromRole="Gebruikers" ToRole="Tweets" />
+          <NavigationProperty Name="Gebruikers11" Relationship="Self.Followers" FromRole="Gebruikers" ToRole="Gebruikers1" />
+          <NavigationProperty Name="Gebruikers3" Relationship="Self.Followers" FromRole="Gebruikers1" ToRole="Gebruikers" />
+        </EntityType>
+        <EntityType Name="Tweets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="postedFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gebruiker_Id" Type="Int32" Nullable="false" />
+          <Property Name="postDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Gebruiker_Id1" Type="Int32" />
+          <NavigationProperty Name="Gebruikers" Relationship="Self.FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1" FromRole="Tweets" ToRole="Gebruikers" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="0..1" />
+          <End Role="Gebruikers1" Type="Self.Gebruikers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruikers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gebruikers1">
+              <PropertyRef Name="Gebruiker_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="0..1" />
+          <End Role="Tweets" Type="Self.Tweets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruikers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tweets">
+              <PropertyRef Name="Gebruiker_Id1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Followers">
+          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="*" />
+          <End Role="Gebruikers1" Type="Self.Gebruikers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Gebruikers" EntityType="Self.Gebruikers" />
+          <EntitySet Name="Tweets" EntityType="Self.Tweets" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id" Association="Self.FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Gebruikers1" EntitySet="Gebruikers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1" Association="Self.FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Tweets" EntitySet="Tweets" />
+          </AssociationSet>
+          <AssociationSet Name="Followers" Association="Self.Followers">
+            <End Role="Gebruikers" EntitySet="Gebruikers" />
+            <End Role="Gebruikers1" EntitySet="Gebruikers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KwetterDataContextKwetterContextModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Kwetter.Data.Context.KwetterContextModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Kwetter.Data.Context.KwetterContextModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gebruikers">
+            <EntityTypeMapping TypeName="Kwetter.Data.Context.KwetterContextModel.Gebruikers">
+              <MappingFragment StoreEntitySet="Gebruikers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="Gebruiker_Id" ColumnName="Gebruiker_Id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tweets">
+            <EntityTypeMapping TypeName="Kwetter.Data.Context.KwetterContextModel.Tweets">
+              <MappingFragment StoreEntitySet="Tweets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="postedFrom" ColumnName="postedFrom" />
+                <ScalarProperty Name="Gebruiker_Id" ColumnName="Gebruiker_Id" />
+                <ScalarProperty Name="postDate" ColumnName="postDate" />
+                <ScalarProperty Name="Gebruiker_Id1" ColumnName="Gebruiker_Id1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Kwetter.Data.Context.KwetterContextModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Followers" TypeName="Kwetter.Data.Context.KwetterContextModel.Followers" StoreEntitySet="Followers">
+            <EndProperty Name="Gebruikers">
+              <ScalarProperty Name="Id" ColumnName="GebruikerId" />
+            </EndProperty>
+            <EndProperty Name="Gebruikers1">
+              <ScalarProperty Name="Id" ColumnName="FollowerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

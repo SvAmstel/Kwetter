@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e7e0d8a5aa845d794be0f9be782c3c2" Name="Diagram1">
+        <EntityTypeShape EntityType="Kwetter.Data.Context.KwetterContextModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kwetter.Data.Context.KwetterContextModel.Employees" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kwetter.Data.Context.KwetterContextModel.Gebruikers" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kwetter.Data.Context.KwetterContextModel.Tweets" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kwetter.Data.Context.KwetterContextModel.Users" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Kwetter.Data.Context.KwetterContextModel.FK_dbo_Gebruikers_dbo_Gebruikers_Gebruiker_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Kwetter.Data.Context.KwetterContextModel.FK_dbo_Tweets_dbo_Gebruikers_Gebruiker_Id1" ManuallyRouted="false" />
+        <AssociationConnector Association="Kwetter.Data.Context.KwetterContextModel.Followers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
