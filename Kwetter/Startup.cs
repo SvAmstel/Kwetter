@@ -26,6 +26,7 @@ namespace Kwetter
 
             app.UseOAuthBearerTokens(OAuthOptions);
             app.UseOAuthAuthorizationServer(OAuthOptions);
+
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             HttpConfiguration config = new HttpConfiguration();

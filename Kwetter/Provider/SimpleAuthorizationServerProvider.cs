@@ -19,9 +19,10 @@ namespace Kwetter.Provider
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*"});
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "*" });
 
-           using (var db = new Entities())
+            using (var db = new Entities())
             {
                 if (db != null)
                 {

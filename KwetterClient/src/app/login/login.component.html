@@ -1,3 +1,4 @@
 
 <input type="text" name="naam" #naam />
-<button type="button" (click)="adduser(naam.value)">Inloggen</button>
+<input type="password" name="password" #password />
+<button type="button" (click)="login(naam.value, password.value)">Inloggen</button>
