@@ -20,7 +20,7 @@ namespace Kwetter
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(20),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(120),
                 Provider = new SimpleAuthorizationServerProvider()
             };
 

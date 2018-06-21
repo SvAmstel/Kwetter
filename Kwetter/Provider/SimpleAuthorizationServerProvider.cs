@@ -31,8 +31,6 @@ namespace Kwetter.Provider
                     {
                         if (!string.IsNullOrEmpty(user.Where(u => u.naam == context.UserName && u.password == context.Password).FirstOrDefault().naam))
                         {
-                            identity.AddClaim(new Claim("Age", "16"));
-
                             var props = new AuthenticationProperties(new Dictionary<string, string>
                             {
                                 {

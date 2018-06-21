@@ -1,5 +1,6 @@
-<div *ngIf="selectedUser" class="hidden">
-  <button class="users">Terug</button>
+<div *ngIf="token" class="hidden">
+  <!--  <button class="users">Terug</button>-->
+  <button class="users" (click)="logout()">Logout</button>
 </div>
 <!--
 <div *ngIf="!selectedUser" class="hidden">
@@ -10,11 +11,10 @@
     </li>
   </ul>
     </div>-->
-    <div >
+    <div *ngIf="!token" class="hidden">
       <app-login></app-login>
-  <app-login *ngIf="!loggedUser" class="hidden"></app-login>
-</div>
-    <div *ngIf="selectedUser" class="hidden">
+    </div>
+    <div *ngIf="token" class="hidden">
       <app-user-detail [user]="selectedUser"></app-user-detail>
       <app-addtweets [user]="selectedUser"></app-addtweets>
       <app-tweets [user]="selectedUser"></app-tweets>

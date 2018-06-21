@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   user: User;
   users: User[];
   naam: string;
+  token: string;
 
   ngOnInit() {
     this.getUsers();
@@ -23,6 +24,11 @@ export class UsersComponent implements OnInit {
     this.loggedUser.naam = "Simon";
     this.selectedUser = new User();
     this.selectedUser.naam = "Simon";
+    if (sessionStorage.getItem('token')) {
+      this.token = sessionStorage.getItem('token');
+    }
+    
+    console.log(this.token);
   }
 
   onSelect(user: User): void {
@@ -42,5 +48,8 @@ export class UsersComponent implements OnInit {
     this.naam = naam;
     //console.log('nieuwe gebruiker: ' + this.naam);
     this.userService.addUser(this.naam);
-}
+  }
+  logout(): void {
+    sessionStorage.clear();
+  }
 }
