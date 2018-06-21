@@ -23,6 +23,7 @@ namespace Kwetter.REST
         }
 
         [HttpGet]
+        [Authorize]
         [Route("api/kwetter/{naam}/tweets")]
         public List<Tweet> GetTweetsByUser(string naam)
         {
@@ -40,6 +41,7 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
+        [Authorize]
         [Route("api/kwetter/tweets/add")]
         public void PostAddTweet(HttpRequestMessage request)
         {
@@ -57,6 +59,7 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
+        [Authorize]
         [Route("api/kwetter/tweets/delete")]
         public void PostDeleteTweet(HttpRequestMessage request)
         {
@@ -70,6 +73,7 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
+        [Authorize]
         [Route("api/kwetter/tweets/edit")]
         public void PostEditTweet(HttpRequestMessage request)
         {
