@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Tweet } from './tweet';
 import { Subject } from 'rxjs/Subject';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class TweetService {
@@ -18,11 +19,19 @@ export class TweetService {
   id: number;
   editText: string;
   tweets: Subject<Tweet[]>;
+  body: string;
 
   getTweets(gebruikersNaam): Subject<Tweet[]> {
     this.finalUrl = this.getTweetsUrl + gebruikersNaam + "/tweets";
-    console.log(this.finalUrl);
-    this.http.get<Tweet[]>(this.finalUrl).subscribe(tweet => { console.log(tweet); this.tweets.next(tweet); console.log(this.tweets) });
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    var token = sessionStorage.getItem('token').toString();
+    headers.append('Authorization', token);
+
+    this.http.get<Tweet[]>(this.finalUrl, {
+      headers: headers
+    })
+      .subscribe(tweet => { console.log(tweet); this.tweets.next(tweet); console.log(this.tweets) });
     return this.tweets;
   }
 

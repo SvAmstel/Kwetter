@@ -51,5 +51,7 @@ export class UsersComponent implements OnInit {
   }
   logout(): void {
     sessionStorage.clear();
+    location.reload();
+    
   }
 }

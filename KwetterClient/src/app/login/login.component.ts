@@ -17,5 +17,6 @@ export class LoginComponent implements OnInit {
 
   login(naam, password) {
     this.loginService.login(naam, password);
+    location.reload();
   }
 }

@@ -6,10 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Kwetter.REST
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE")]
+    //[EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS")]
     public class KwetterController : ApiController
     {
         KwetterService gebruikerDao = new KwetterService(new GebruikerDaoImpl());
