@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using Kwetter.Data.Models;
 using Kwetter.Data.Context;
+using Kwetter.REST;
+using System.Diagnostics.Tracing;
+using System.Net.Sockets;
+using System.Net;
+using System.Net.Http;
 
 namespace Kwetter.Data.Service
 {
@@ -11,6 +16,8 @@ namespace Kwetter.Data.Service
     {
         public void Initialize()
         {
+          
+
             using (var context = new KwetterContext())
             {
 

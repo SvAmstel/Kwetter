@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { AddtweetsComponent } from './addtweets/addtweets.component';
 import { EditTweetComponent } from './edit-tweet/edit-tweet.component';
 
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EditTweetComponent } from './edit-tweet/edit-tweet.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   providers: [UserService, TweetService, LoginService],
   bootstrap: [AppComponent]

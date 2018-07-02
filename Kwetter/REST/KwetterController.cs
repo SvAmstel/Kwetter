@@ -3,16 +3,53 @@ using Kwetter.Data.Models;
 using Kwetter.Data.Service;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading;
 using System.Web.Http;
-using System.Web.Http.Cors;
+using Microsoft.AspNet.SignalR;
 
 namespace Kwetter.REST
 {
     //[EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS")]
     public class KwetterController : ApiController
     {
+        [Serializable]
+        [DataContract]
+        public class CommonData
+        {
+            [DataMember]
+            public string Message { get; set; }
+        }
+
+        // Just common test data we will get and post
+        static CommonData commonData = new CommonData() { Message = "Our first data" };
+
+        // Get some data test
+        [HttpGet]
+        public CommonData Get()
+        {
+            return commonData;
+        }
+
+        // Update some data test
+        [HttpPost]
+        public bool Post([FromBody] CommonData data)
+        {
+            commonData = data;
+            ServerSentEventController.BroadcastCommonDataStatic(commonData);
+            return true;
+        }
+
+
+
+
+
+
+
         KwetterService gebruikerDao = new KwetterService(new GebruikerDaoImpl());
         KwetterService tweetDao = new KwetterService(new TweetDaoImpl());
 
@@ -24,7 +61,7 @@ namespace Kwetter.REST
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         [Route("api/kwetter/{naam}/tweets")]
         public List<Tweet> GetTweetsByUser(string naam)
         {
@@ -42,7 +79,7 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
-        [Authorize]
+        // [Authorize]
         [Route("api/kwetter/tweets/add")]
         public void PostAddTweet(HttpRequestMessage request)
         {
@@ -56,11 +93,13 @@ namespace Kwetter.REST
             tweet.content = jTweet["content"].ToString();
             tweet.postDate = DateTime.Parse((jTweet["postDate"].ToString()));
             tweet.postedFrom = jTweet["postedFrom"].ToString();
-            tweetDao.CreateTweet(tweet, geb);
+            //tweetDao.CreateTweet(tweet, geb);
+            SynchronizationContext.SetSynchronizationContext(null);
+           // sseController.Post();
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [Route("api/kwetter/tweets/delete")]
         public void PostDeleteTweet(HttpRequestMessage request)
         {
@@ -74,7 +113,7 @@ namespace Kwetter.REST
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [Route("api/kwetter/tweets/edit")]
         public void PostEditTweet(HttpRequestMessage request)
         {
@@ -82,7 +121,7 @@ namespace Kwetter.REST
             JObject jTweet = JObject.Parse(message);
             Tweet t = new Tweet();
             t.content = jTweet["content"].ToString();
-            t.Id = Convert.ToInt32( jTweet["Id"].ToString());
+            t.Id = Convert.ToInt32(jTweet["Id"].ToString());
             tweetDao.EditTweet(t);
         }
     }

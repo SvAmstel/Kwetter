@@ -10,7 +10,7 @@ namespace Kwetter
     {
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
+            //config.EnableCors();
             config.MapHttpAttributeRoutes();
             //config.Routes.MapHttpRoute(name: "API Default", routeTemplate: "api/{controller}");
             config.Routes.MapHttpRoute(
@@ -21,6 +21,8 @@ namespace Kwetter
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SupportedMediaTypes
+                .Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
         }
     }
 }

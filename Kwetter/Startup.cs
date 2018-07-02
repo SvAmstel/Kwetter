@@ -3,10 +3,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
+using Microsoft.Extensions.DependencyInjection;
+using System.Web.Http.Cors;
+using Microsoft.Owin.Cors;
 
 [assembly: OwinStartup(typeof(Kwetter.Startup))]
 namespace Kwetter
@@ -15,7 +15,6 @@ namespace Kwetter
     {
         public void ConfigureAuth(IAppBuilder app)
         {
-
             var OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 AllowInsecureHttp = true,
@@ -35,8 +34,11 @@ namespace Kwetter
 
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
+            app.UseCors(CorsOptions.AllowAll);
             ConfigureAuth(app);
             GlobalConfiguration.Configure(WebApiConfig.Register);
+           
         }
     }
 }
