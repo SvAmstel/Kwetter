@@ -4,8 +4,10 @@
   {{ title }}
 </h1>
 <app-users></app-users>
+<br />
+<br />
 <div>
-  Test API:<br />
+  Test SSE:<br />
   commonData.Message: <input #textbox type="text" [(ngModel)]="commonData.message" /><br />
   <button (click)="getCommonData()">Load data</button>
   <button (click)="setCommonData()">Save data</button>

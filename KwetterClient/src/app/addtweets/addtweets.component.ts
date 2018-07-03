@@ -32,7 +32,7 @@ export class AddtweetsComponent implements OnInit {
       minute: 'numeric'
     }).split(' ').join(' ');
     this.tweet.postDate = this.date;
-    this.tweet.Gebruiker_Id = 244;
+    this.tweet.Gebruiker_Id = 1;
     console.log('nieuwe tweet: ' + this.tweet.content + ' ' + this.tweet.postDate);
     this.tweetService.addTweet(this.tweet);
   }
