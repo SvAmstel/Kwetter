@@ -52,21 +52,20 @@ export class AppComponent {
   connectToSignalRHub() {
     // Initialize the hub
     // note the first letter of the hub class - lowercase!!!
-    this.hub = new signalR.HubConnectionBuilder().withUrl('http://localhost:59694/signalr').build();
-    //this.hub = $.connection.serverSentEventController;
-    console.log(this.hub);
+    $.connection.hub.url = "http://localhost:59694/signalr/hubs";
+    this.hub = $.connection.serverSentEventController;
     this.server = this.hub.server;
     this.client = this.hub.client;
     let self = this;
-    console.log(this.client);
+
     // register callbacks to react to server events
     // note the first letter of the method name - lowercase!!!
-    /*this.client.broadcastCommonData = (data: CommonData) => {
+    this.client.broadcastCommonData = (data: CommonData) => {
       self.commonData = data;
     };
-    */
+    
     // connect to the hub
-        this.hub.start().done((data: any) => {
+    $.connection.hub.start().done((data: any) => {
       console.log('hub connection started ' + data);
     }).fail((error: any) => {
       console.log('Could not connect to hub:' + error);
@@ -75,10 +74,6 @@ export class AppComponent {
     // if you need to call the server hub method - use server variable:
     //this.server.broadcastCommonData(this.commonData);
   }
-
-
- 
-
    
   Login(): void {
     console.log("LOGIN");
