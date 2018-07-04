@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';   // to use Http
 import 'rxjs/add/operator/map';
-import * as signalR from '@aspnet/signalr';
+//import 'jquery';
+import 'signalr';
+
 // For SignalR
 //import * as jq from 'jquery/dist/jquery.min.js';
 //
@@ -22,7 +24,12 @@ export class AppComponent {
   commonData: CommonData = { message: "Default" };
   // constructor with http injection
   constructor(private http: Http) {
-   this.connectToSignalRHub(); // SignalR
+    $(document).ready (function() {
+      
+            {
+        this.connectToSignalRHub(); // SignalR
+      }
+    });
   }
 
   // get our commonData object from the server
@@ -52,7 +59,7 @@ export class AppComponent {
   connectToSignalRHub() {
     // Initialize the hub
     // note the first letter of the hub class - lowercase!!!
-    $.connection.hub.url = "http://localhost:59694/signalr/hubs";
+    $.connection.hub.url = "http://localhost:59694/signalr";
     this.hub = $.connection.serverSentEventController;
     this.server = this.hub.server;
     this.client = this.hub.client;
